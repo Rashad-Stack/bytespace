@@ -16,7 +16,7 @@ export default function SearchForm() {
     <form
       id="form-search"
       onSubmit={form.handleSubmit(onSubmit)}
-      className="mx-auto max-w-xl"
+      className="mx-auto mt-15 max-w-xl"
     >
       <FieldGroup className="flex flex-row items-center gap-4">
         <Controller
@@ -31,9 +31,10 @@ export default function SearchForm() {
                   aria-invalid={fieldState.invalid}
                   placeholder="Course, topic, creator"
                   autoComplete="off"
+                  className="placeholder:body-l"
                 />
                 <InputGroupAddon>
-                  <Icon src="/icons/search.svg" />
+                  <Icon src="/icons/search.svg" className="size-6" />
                 </InputGroupAddon>
               </InputGroup>
             </Field>
@@ -41,7 +42,7 @@ export default function SearchForm() {
         />
 
         <button
-          className="flex items-center justify-center rounded-full bg-secondary px-6 py-3 body-l font-medium text-neutral-950"
+          className="flex cursor-pointer items-center justify-center rounded-full bg-secondary px-6 py-3 body-l font-medium text-neutral-950"
           type="submit"
         >
           Search
