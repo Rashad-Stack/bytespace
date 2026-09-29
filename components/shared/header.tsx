@@ -1,6 +1,6 @@
-import Logo from "@/svgs/logo.svg"
 import Link from "next/link"
 import Container from "./container"
+import Icon from "./icon"
 import NavbarCta from "./nav-bar-cta"
 import NavMenu from "./nav-menu"
 
@@ -11,7 +11,7 @@ export default function Header() {
         <Container>
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-baseline gap-[8.12px]">
-              <Logo className="h-[31.5px] w-[28.875px]" />
+              <Icon src="/icons/logo.svg" className="h-[31.5px] w-[28.875px]" />
               <span className="font-clash-display text-2xl font-bold text-neutral-50">
                 ByteSpace
               </span>

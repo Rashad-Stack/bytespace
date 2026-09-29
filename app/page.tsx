@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import ConeIcon from "@/svgs/Cone.svg"
 
 export default function Page() {
   return (
@@ -14,7 +13,6 @@ export default function Page() {
         <div className="font-mono text-xs text-muted-foreground">
           (Press <kbd>d</kbd> to toggle dark mode)
         </div>
-        <ConeIcon className="h-48 w-48 text-[#CBFC01]" />
       </div>
     </main>
   )

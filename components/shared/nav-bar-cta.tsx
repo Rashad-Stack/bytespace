@@ -1,9 +1,9 @@
 "use client"
 
-import Cart from "@/svgs/cart.svg"
 import { cn } from "cn"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Icon from "./icon"
 
 export default function NavbarCta() {
   const pathname = usePathname()
@@ -23,7 +23,7 @@ export default function NavbarCta() {
       ))}
 
       <Link href="/cart">
-        <Cart className="h-auto w-6 text-neutral-50" />
+        <Icon src="/icons/cart.svg" className="h-auto w-6 text-neutral-50" />
       </Link>
     </div>
   )
