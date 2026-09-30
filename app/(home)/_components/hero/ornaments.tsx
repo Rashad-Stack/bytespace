@@ -184,7 +184,7 @@ export default function Ornaments() {
           width={578}
           height={541}
           priority
-          className="absolute left-1/2 translate-x-[-42%] scale-128 object-contain object-center"
+          className="absolute left-1/2 translate-x-[-50%] object-contain object-center"
           style={{
             width: `calc(var(--u) * ${k} * 578)`,
             height: `calc(var(--u) * ${k} * 541)`,
