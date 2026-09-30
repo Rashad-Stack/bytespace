@@ -1,123 +1,283 @@
 import Icon from "@/components/shared/icon"
 import Image from "next/image"
+import type { CSSProperties, ReactNode } from "react"
+
+/** 1 design px -> scaled px. `--u` is set on the hero section (globals.css). */
+const px = (n: number) => `calc(var(--u, 1px) * ${n})`
+
+type Box = {
+  w: number
+  h: number
+  left?: number
+  right?: number
+  top?: number
+  bottom?: number
+}
+
+const boxStyle = (b: Box): CSSProperties => ({
+  width: px(b.w),
+  height: px(b.h),
+  left: b.left !== undefined ? px(b.left) : undefined,
+  right: b.right !== undefined ? px(b.right) : undefined,
+  top: b.top !== undefined ? px(b.top) : undefined,
+  bottom: b.bottom !== undefined ? px(b.bottom) : undefined,
+})
+
+/** A design-sized coordinate space, centered. Everything inside uses px(). */
+function Stage({
+  width,
+  className = "",
+  children,
+}: {
+  width: number
+  className?: string
+  children: ReactNode
+}) {
+  return (
+    <div
+      className={`absolute inset-y-0 left-1/2 z-20 -translate-x-1/2 ${className}`}
+      style={{ width: px(width) }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function Ornament({
+  n,
+  box,
+  fit,
+}: {
+  n: number
+  box: Box
+  fit: "object-left" | "object-right"
+}) {
+  return (
+    <div className="absolute" style={boxStyle(box)}>
+      <Image
+        src={`/images/home/ornaments-${n}.png`}
+        alt="Hero ornament"
+        fill
+        sizes="400px"
+        className={`object-contain ${fit}`}
+      />
+    </div>
+  )
+}
+
+/** White card, laid out at its natural size and scaled with the hero. */
+function FloatingCard({
+  className = "",
+  style,
+  scale,
+  origin,
+  children,
+}: {
+  className?: string
+  style: CSSProperties
+  scale: string
+  origin: string
+  children: ReactNode
+}) {
+  return (
+    <div
+      className={`absolute rounded-[16px] bg-white p-4 backdrop-blur-[10px] ${className}`}
+      style={{
+        ...style,
+        transform: `scale(${scale})`,
+        transformOrigin: origin,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
+
+function UiUxContent() {
+  return (
+    <>
+      <p className="body-m font-medium text-neutral-950">UI/UX Design</p>
+      <p className="body-xs text-neutral-400">
+        200 Courses <span className="mx-2">•</span> 1000+ Students
+      </p>
+    </>
+  )
+}
+
+function ProgressContent() {
+  return (
+    <>
+      <p className="body-m font-medium text-neutral-950">Learning Progress</p>
+      <p className="font-heading text-[48px] leading-none font-semibold text-neutral-950">
+        55%
+      </p>
+      <div className="mt-3 h-1.5 w-full rounded-full bg-neutral-200">
+        <div className="h-full w-[55%] rounded-full bg-secondary" />
+      </div>
+    </>
+  )
+}
+
+function StudentsContent() {
+  return (
+    <>
+      <p className="body-m font-medium text-neutral-950">Happy Students</p>
+      <div className="flex items-center gap-1 body-xs text-neutral-950">
+        <span> 4.5 </span>
+        <span className="text-neutral-400"> (240)</span>
+        <Icon src="/icons/star.svg" className="size-4" />
+      </div>
+
+      <div className="mt-2 flex items-center">
+        {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+          <Image
+            key={n}
+            src={`/images/home/profile-${n}.png`}
+            alt=""
+            width={28}
+            height={28}
+            className="-ml-3.5 size-10.75 rounded-full object-cover first:ml-0"
+          />
+        ))}
+        <span className="-ml-3.5 flex size-10.75 items-center justify-center rounded-full bg-secondary text-xs font-bold text-neutral-950">
+          2K+
+        </span>
+      </div>
+    </>
+  )
+}
 
 export default function Ornaments() {
+  const k = "var(--k)"
+
   return (
-    <div className="absolute inset-x-0 bottom-0 -z-1 h-200.75 bg-cover bg-no-repeat">
-      <div className="relative flex h-[386.791px] w-full items-baseline justify-between">
-        <div className="relative h-full w-[386.791px] shrink-0">
-          <Image
-            src="/images/home/ornaments-1.png"
-            alt="Hero ornament"
-            fill
-            className="object-contain object-left"
-          />
-        </div>
+    <div className="pointer-events-none absolute inset-0 -z-1 overflow-hidden">
+      {/* ───────── Tablet + desktop ornaments (1920px design space) ───────── */}
+      <Stage width={1920} className="max-md:hidden">
+        <Ornament
+          n={1}
+          fit="object-left"
+          box={{ w: 386.79, h: 386.79, left: 0, top: 221 }}
+        />
+        <Ornament
+          n={2}
+          fit="object-right"
+          box={{ w: 386.79, h: 386.79, right: 0, top: 221 }}
+        />
+        <Ornament
+          n={3}
+          fit="object-left"
+          box={{ w: 175.81, h: 175.81, left: 192, top: 492 }}
+        />
+        <Ornament
+          n={4}
+          fit="object-right"
+          box={{ w: 175.81, h: 175.81, left: 1552, top: 472 }}
+        />
+        <Ornament
+          n={5}
+          fit="object-left"
+          box={{ w: 342, h: 323.69, left: 240, bottom: 12.5 }}
+        />
+        <Ornament
+          n={6}
+          fit="object-right"
+          box={{ w: 318, h: 343.69, left: 1362, bottom: 12.5 }}
+        />
+      </Stage>
 
-        <div className="absolute inset-x-0 -bottom-15 mx-auto flex h-[175.814px] w-full max-w-[80%] items-center justify-between">
-          <div className="relative h-full w-[175.814px] shrink-0">
-            <Image
-              src="/images/home/ornaments-3.png"
-              alt="Hero ornament"
-              fill
-              className="object-contain object-left"
-            />
-          </div>
+      {/* ───────── Mobile ornaments + cards (390px design space) ───────── */}
+      <Stage width={390} className="md:hidden">
+        <Ornament
+          n={1}
+          fit="object-left"
+          box={{ w: 96, h: 96, left: 0, top: 72 }}
+        />
+        <Ornament
+          n={2}
+          fit="object-right"
+          box={{ w: 96, h: 96, right: 0, top: 64 }}
+        />
+        <Ornament
+          n={5}
+          fit="object-left"
+          box={{ w: 100, h: 96, left: 0, bottom: 120 }}
+        />
+        <Ornament
+          n={6}
+          fit="object-right"
+          box={{ w: 90, h: 96, right: 0, bottom: 34 }}
+        />
 
-          <div className="relative -mt-10 h-full w-[175.814px] shrink-0">
-            <Image
-              src="/images/home/ornaments-4.png"
-              alt="Hero ornament"
-              fill
-              className="object-contain object-right"
-            />
-          </div>
-        </div>
+        <FloatingCard
+          className="w-57.75"
+          style={{ right: px(10), bottom: px(178) }}
+          scale="calc(var(--s) * 0.62)"
+          origin="bottom right"
+        >
+          <ProgressContent />
+        </FloatingCard>
 
-        <div className="relative h-full w-[386.791px] shrink-0">
-          <Image
-            src="/images/home/ornaments-2.png"
-            alt="Hero ornament"
-            fill
-            className="object-contain object-right"
-          />
-        </div>
-      </div>
+        <FloatingCard
+          style={{ left: px(10), bottom: px(22) }}
+          scale="calc(var(--s) * 0.55)"
+          origin="bottom left"
+        >
+          <StudentsContent />
+        </FloatingCard>
+      </Stage>
 
-      <div className="relative top-15 z-20 mx-auto flex h-[343.689px] w-full max-w-[75%] items-baseline justify-between">
-        <div className="relative h-full w-85.5 shrink-0">
-          <Image
-            src="/images/home/ornaments-5.png"
-            alt="Hero ornament"
-            fill
-            className="mt-5 object-contain object-left"
-          />
-        </div>
-
-        <div className="relative h-full w-82.5 shrink-0">
-          <Image
-            src="/images/home/ornaments-6.png"
-            alt="Hero ornament"
-            fill
-            className="ml-3 object-contain object-right"
-          />
-        </div>
-      </div>
-
-      <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-150 w-287.25 -translate-x-1/2">
+      {/* ───────── Person + arch (one instance, scaled via --u and --k) ───────── */}
+      <div
+        className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2"
+        style={{
+          width: `calc(var(--u) * ${k} * 1149)`,
+          height: `calc(var(--u) * ${k} * 600)`,
+        }}
+      >
         <div className="absolute inset-0 bg-[url('/images/home/hero-person-bg.png')] bg-contain bg-bottom bg-no-repeat" />
+
         <Image
           alt="Person in the hero section"
           src="/images/home/hero-person.png"
           width={578}
           height={541}
-          className="absolute -bottom-3 left-1/2 h-135.25 w-144.5 translate-x-[-42%] scale-128 object-contain object-center"
           priority
+          className="absolute left-1/2 translate-x-[-42%] scale-128 object-contain object-center"
+          style={{
+            width: `calc(var(--u) * ${k} * 578)`,
+            height: `calc(var(--u) * ${k} * 541)`,
+            bottom: `calc(var(--u) * ${k} * -12)`,
+          }}
         />
 
-        <div className="absolute bottom-77.75 left-60 w-54 rounded-[16px] bg-white p-4 backdrop-blur-[10px]">
-          <p className="body-m font-medium text-neutral-950">UI/UX Design</p>
-          <p className="body-xs text-neutral-400">
-            200 Courses <span className="mx-2">•</span> 1000+ Students
-          </p>
-        </div>
+        {/* Tablet + desktop cards (positions match your Figma) */}
+        <FloatingCard
+          className="w-54 max-md:hidden"
+          style={{ left: px(240), bottom: px(311) }}
+          scale="var(--s)"
+          origin="bottom left"
+        >
+          <UiUxContent />
+        </FloatingCard>
 
-        <div className="absolute bottom-60.5 left-173 w-57.75 rounded-[16px] bg-white p-4 backdrop-blur-[10px]">
-          <p className="body-m font-medium text-neutral-950">
-            Learning Progress
-          </p>
-          <p className="font-heading text-[48px] leading-none font-semibold text-neutral-950">
-            55%
-          </p>
-          <div className="mt-3 h-1.5 w-full rounded-full bg-neutral-200">
-            <div className="h-full w-[55%] rounded-full bg-secondary" />
-          </div>
-        </div>
+        <FloatingCard
+          className="w-57.75 max-md:hidden"
+          style={{ left: px(692), bottom: px(242) }}
+          scale="var(--s)"
+          origin="bottom left"
+        >
+          <ProgressContent />
+        </FloatingCard>
 
-        <div className="absolute bottom-17 left-40 rounded-[16px] bg-white p-4 backdrop-blur-[10px]">
-          <p className="body-m font-medium text-neutral-950">Happy Students</p>
-          <p className="flex items-center gap-1 body-xs text-neutral-950">
-            <span> 4.5 </span>
-            <span className="text-neutral-400"> (240)</span>
-            <Icon src="/icons/star.svg" className="size-4" />
-          </p>
-
-          <div className="mt-2 flex items-center">
-            {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-              <Image
-                key={n}
-                src={`/images/home/profile-${n}.png`}
-                alt=""
-                width={28}
-                height={28}
-                className="-ml-3.5 size-10.75 rounded-full object-cover first:ml-0"
-              />
-            ))}
-            <span className="-ml-3.5 flex size-10.75 items-center justify-center rounded-full bg-secondary text-xs font-bold text-neutral-950">
-              2K+
-            </span>
-          </div>
-        </div>
+        <FloatingCard
+          className="max-md:hidden"
+          style={{ left: px(160), bottom: px(68) }}
+          scale="var(--s)"
+          origin="bottom left"
+        >
+          <StudentsContent />
+        </FloatingCard>
       </div>
     </div>
   )
