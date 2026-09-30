@@ -1,69 +1,10 @@
 import Icon from "@/components/shared/icon"
+import Ornament from "@/components/shared/ornament"
+import Stage from "@/components/shared/stage"
 import Image from "next/image"
 import type { CSSProperties, ReactNode } from "react"
 
-/** 1 design px -> scaled px. `--u` is set on the hero section (globals.css). */
 const px = (n: number) => `calc(var(--u, 1px) * ${n})`
-
-type Box = {
-  w: number
-  h: number
-  left?: number
-  right?: number
-  top?: number
-  bottom?: number
-}
-
-const boxStyle = (b: Box): CSSProperties => ({
-  width: px(b.w),
-  height: px(b.h),
-  left: b.left !== undefined ? px(b.left) : undefined,
-  right: b.right !== undefined ? px(b.right) : undefined,
-  top: b.top !== undefined ? px(b.top) : undefined,
-  bottom: b.bottom !== undefined ? px(b.bottom) : undefined,
-})
-
-/** A design-sized coordinate space, centered. Everything inside uses px(). */
-function Stage({
-  width,
-  className = "",
-  children,
-}: {
-  width: number
-  className?: string
-  children: ReactNode
-}) {
-  return (
-    <div
-      className={`absolute inset-y-0 left-1/2 z-20 -translate-x-1/2 ${className}`}
-      style={{ width: px(width) }}
-    >
-      {children}
-    </div>
-  )
-}
-
-function Ornament({
-  n,
-  box,
-  fit,
-}: {
-  n: number
-  box: Box
-  fit: "object-left" | "object-right"
-}) {
-  return (
-    <div className="absolute" style={boxStyle(box)}>
-      <Image
-        src={`/images/home/ornaments-${n}.png`}
-        alt="Hero ornament"
-        fill
-        sizes="400px"
-        className={`object-contain ${fit}`}
-      />
-    </div>
-  )
-}
 
 /** White card, laid out at its natural size and scaled with the hero. */
 function FloatingCard({
@@ -155,32 +96,32 @@ export default function Ornaments() {
       {/* ───────── Tablet + desktop ornaments (1920px design space) ───────── */}
       <Stage width={1920} className="max-md:hidden">
         <Ornament
-          n={1}
+          n="/images/home/ornaments-1.png"
           fit="object-left"
           box={{ w: 386.79, h: 386.79, left: 0, top: 221 }}
         />
         <Ornament
-          n={2}
+          n="/images/home/ornaments-2.png"
           fit="object-right"
           box={{ w: 386.79, h: 386.79, right: 0, top: 221 }}
         />
         <Ornament
-          n={3}
+          n="/images/home/ornaments-3.png"
           fit="object-left"
           box={{ w: 175.81, h: 175.81, left: 192, top: 492 }}
         />
         <Ornament
-          n={4}
+          n="/images/home/ornaments-4.png"
           fit="object-right"
           box={{ w: 175.81, h: 175.81, left: 1552, top: 472 }}
         />
         <Ornament
-          n={5}
+          n="/images/home/ornaments-5.png"
           fit="object-left"
           box={{ w: 342, h: 323.69, left: 240, bottom: 12.5 }}
         />
         <Ornament
-          n={6}
+          n="/images/home/ornaments-6.png"
           fit="object-right"
           box={{ w: 318, h: 343.69, left: 1362, bottom: 12.5 }}
         />
@@ -189,22 +130,22 @@ export default function Ornaments() {
       {/* ───────── Mobile ornaments + cards (390px design space) ───────── */}
       <Stage width={390} className="md:hidden">
         <Ornament
-          n={1}
+          n="/images/home/ornaments-1.png"
           fit="object-left"
           box={{ w: 96, h: 96, left: 0, top: 72 }}
         />
         <Ornament
-          n={2}
+          n="/images/home/ornaments-2.png"
           fit="object-right"
           box={{ w: 96, h: 96, right: 0, top: 64 }}
         />
         <Ornament
-          n={5}
+          n="/images/home/ornaments-5.png"
           fit="object-left"
           box={{ w: 100, h: 96, left: 0, bottom: 120 }}
         />
         <Ornament
-          n={6}
+          n="/images/home/ornaments-6.png"
           fit="object-right"
           box={{ w: 90, h: 96, right: 0, bottom: 34 }}
         />
