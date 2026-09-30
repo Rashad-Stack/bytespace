@@ -1,3 +1,4 @@
+import Management from "./management"
 import ProfessionalGrowth from "./professional-growth"
 
 export default function About() {
@@ -8,6 +9,7 @@ export default function About() {
     >
       <div className="container space-y-18">
         <ProfessionalGrowth />
+        <Management />
       </div>
     </section>
   )
