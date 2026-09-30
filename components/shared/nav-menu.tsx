@@ -4,11 +4,11 @@ import { cn } from "cn"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-export default function NavMenu() {
+export default function NavMenu({ className }: { className?: string }) {
   const pathname = usePathname()
 
   return (
-    <nav className="flex items-center gap-6">
+    <nav className={cn("items-center gap-6", className)}>
       {navLinks.map((link) => (
         <Link
           key={link.id}
@@ -24,7 +24,7 @@ export default function NavMenu() {
   )
 }
 
-const navLinks = [
+export const navLinks = [
   { id: 1, name: "Home", href: "/" },
   { id: 2, name: "Courses", href: "/courses" },
   { id: 3, name: "Creators", href: "/creators" },

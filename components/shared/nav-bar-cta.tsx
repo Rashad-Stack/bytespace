@@ -5,11 +5,11 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Icon from "./icon"
 
-export default function NavbarCta() {
+export default function NavbarCta({ className }: { className?: string }) {
   const pathname = usePathname()
 
   return (
-    <div className="flex items-center gap-6">
+    <div className={cn("items-center gap-6", className)}>
       {ctaLinks.map((link) => (
         <Link
           key={link.id}
@@ -22,14 +22,14 @@ export default function NavbarCta() {
         </Link>
       ))}
 
-      <Link href="/cart">
+      <Link href="/cart" aria-label="Cart">
         <Icon src="/icons/cart.svg" className="h-auto w-6 text-neutral-50" />
       </Link>
     </div>
   )
 }
 
-const ctaLinks = [
+export const ctaLinks = [
   { id: 1, name: "Sign In", href: "/sign-in" },
   { id: 2, name: "Join Us", href: "/sign-up" },
 ]
