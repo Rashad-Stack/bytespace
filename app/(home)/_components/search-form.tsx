@@ -31,7 +31,7 @@ export default function SearchForm() {
                   aria-invalid={fieldState.invalid}
                   placeholder="Course, topic, creator"
                   autoComplete="off"
-                  className="placeholder:body-l"
+                  className="body-l placeholder:body-l"
                 />
                 <InputGroupAddon>
                   <Icon src="/icons/search.svg" className="size-6" />

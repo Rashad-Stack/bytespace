@@ -1,9 +1,10 @@
+import Ornaments from "./ornaments"
 import SearchForm from "./search-form"
 
 export default function Hero() {
   return (
-    <section className="min-h-svh bg-primary-700 grid-background">
-      <div className="container py-20 pt-30">
+    <section className="relative isolate min-h-256 overflow-hidden bg-primary-700 grid-background">
+      <div className="relative z-20 container py-20 pt-30">
         <div className="mx-auto mt-12.25 max-w-233.75 space-y-8">
           <h1 className="text-center heading-l text-white">
             Get Access to Hundreds Courses Available
@@ -17,6 +18,8 @@ export default function Hero() {
           <SearchForm />
         </div>
       </div>
+
+      <Ornaments />
     </section>
   )
 }
