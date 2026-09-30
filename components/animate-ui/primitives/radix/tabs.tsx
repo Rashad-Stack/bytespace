@@ -97,11 +97,24 @@ function TabsContent({
   value,
   forceMount,
   transition = { duration: 0.5, ease: 'easeInOut' },
+  children,
   ...props
 }: TabsContentProps) {
   return (
     <AnimatePresence mode="wait">
-      <TabsPrimitive.Content forceMount={forceMount} value={value} render={<motion.div data-slot="tabs-content" layout layoutDependency={value} initial={{ opacity: 0, filter: 'blur(4px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} exit={{ opacity: 0, filter: 'blur(4px)' }} transition={transition} {...props} />}></TabsPrimitive.Content>
+      <TabsPrimitive.Content forceMount={forceMount} value={value} {...props}>
+        <motion.div
+          data-slot="tabs-content"
+          layout
+          layoutDependency={value}
+          initial={{ opacity: 0, filter: 'blur(4px)' }}
+          animate={{ opacity: 1, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, filter: 'blur(4px)' }}
+          transition={transition}
+        >
+          {children}
+        </motion.div>
+      </TabsPrimitive.Content>
     </AnimatePresence>
   );
 }
