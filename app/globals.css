@@ -355,7 +355,7 @@
   --u: clamp(0.5px, calc(100vw / 390), 2px);
   --k: 0.42;
   --s: 1;
-  min-height: calc(540px + var(--u) * 330);
+  min-height: calc(540px + var(--u) * 120);
 }
 
 @media (min-width: 768px) {
@@ -364,7 +364,7 @@
     --u: clamp(0.6px, calc(100vw / 1920), 1.25px);
     --k: 1;
     --s: 1;
-    min-height: calc(560px + var(--u) * 470);
+    min-height: calc(560px + var(--u) * 370);
   }
 }
 
