@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import type { PropsWithChildren } from "react";
+import { cn } from "@/lib/utils"
+import type { PropsWithChildren } from "react"
 import {
   Dialog,
   DialogContent,
@@ -10,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import useModal from "./use-url-search-params";
+} from "../ui/dialog"
+import useModal from "./use-url-search-params"
 
 interface ModalProps {
-  modalId: string;
-  openId: string;
-  closeModals?: string[];
-  className?: string;
+  modalId: string
+  openId: string
+  closeModals?: string[]
+  className?: string
 }
 
 export default function Modal({
@@ -27,9 +27,9 @@ export default function Modal({
   closeModals,
   className,
 }: PropsWithChildren<ModalProps>) {
-  const { getParams, removeParams, setParams } = useModal();
+  const { getParams, removeParams, setParams } = useModal()
 
-  const modal = getParams(modalId);
+  const modal = getParams(modalId)
 
   const handleOpenChange = (open: boolean) => {
     if (open) {
@@ -38,19 +38,19 @@ export default function Modal({
           key: modalId,
           value: openId,
         },
-      ]);
+      ])
     } else {
-      removeParams([modalId, ...(closeModals || [])]);
+      removeParams([modalId, ...(closeModals || [])])
     }
-  };
+  }
 
   return (
     <Dialog open={modal === openId} onOpenChange={handleOpenChange}>
-      <DialogTrigger asChild hidden />
+      <DialogTrigger hidden />
       <DialogContent
         className={cn(
           "min-h-auto min-w-fit border-none bg-transparent p-0 shadow-none",
-          className,
+          className
         )}
       >
         <DialogHeader hidden>
@@ -61,5 +61,5 @@ export default function Modal({
         <DialogFooter hidden />
       </DialogContent>
     </Dialog>
-  );
+  )
 }
