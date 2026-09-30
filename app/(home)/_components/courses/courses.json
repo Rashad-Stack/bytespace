@@ -1,6 +1,7 @@
 [
   {
-    "image": "/images/Frame-1.png",
+    "image": "/images/home/figma-basic.png",
+    "category": "design",
     "title": "Learn Figma from Basic",
     "instructor": "purepearl studio",
     "instructorHref": "/instructors/purepearl-studio",
@@ -12,13 +13,14 @@
     "price": 25,
     "href": "/courses/learn-figma-from-basic",
     "instructors": [
-      { "name": "Instructor 1", "image": "/images/Image.png" },
-      { "name": "Instructor 2", "image": "/images/Image-1.png" },
-      { "name": "Instructor 3", "image": "/images/Image-2.png" }
+      { "name": "Instructor 1", "image": "/images/home/profile-1.png" },
+      { "name": "Instructor 2", "image": "/images/home/profile-2.png" },
+      { "name": "Instructor 3", "image": "/images/home/profile-3.png" }
     ]
   },
   {
-    "image": "/images/Frame-2.png",
+    "image": "/images/home/digital-assets.png",
+    "category": "development",
     "title": "Build Digital Asset",
     "instructor": "purepearl studio",
     "instructorHref": "/instructors/purepearl-studio",
@@ -30,13 +32,14 @@
     "price": 25,
     "href": "/courses/build-digital-asset",
     "instructors": [
-      { "name": "Instructor 1", "image": "/images/Image.png" },
-      { "name": "Instructor 2", "image": "/images/Image-1.png" },
-      { "name": "Instructor 3", "image": "/images/Image-2.png" }
+      { "name": "Instructor 1", "image": "/images/home/profile-1.png" },
+      { "name": "Instructor 2", "image": "/images/home/profile-2.png" },
+      { "name": "Instructor 3", "image": "/images/home/profile-3.png" }
     ]
   },
   {
-    "image": "/images/Frame-3.png",
+    "image": "/images/home/big-data.png",
+    "category": "data",
     "title": "The Power of Big Data",
     "instructor": "purepearl studio",
     "instructorHref": "/instructors/purepearl-studio",
@@ -48,13 +51,14 @@
     "price": 25,
     "href": "/courses/the-power-of-big-data",
     "instructors": [
-      { "name": "Instructor 1", "image": "/images/Image.png" },
-      { "name": "Instructor 2", "image": "/images/Image-1.png" },
-      { "name": "Instructor 3", "image": "/images/Image-2.png" }
+      { "name": "Instructor 1", "image": "/images/home/profile-1.png" },
+      { "name": "Instructor 2", "image": "/images/home/profile-2.png" },
+      { "name": "Instructor 3", "image": "/images/home/profile-3.png" }
     ]
   },
   {
-    "image": "/images/Frame-4.png",
+    "image": "/images/home/productivity.png",
+    "category": "productivity",
     "title": "Balancing Productivity and Focus",
     "instructor": "purepearl studio",
     "instructorHref": "/instructors/purepearl-studio",
@@ -66,13 +70,14 @@
     "price": 25,
     "href": "/courses/balancing-productivity-and-focus",
     "instructors": [
-      { "name": "Instructor 1", "image": "/images/Image.png" },
-      { "name": "Instructor 2", "image": "/images/Image-1.png" },
-      { "name": "Instructor 3", "image": "/images/Image-2.png" }
+      { "name": "Instructor 1", "image": "/images/home/profile-1.png" },
+      { "name": "Instructor 2", "image": "/images/home/profile-2.png" },
+      { "name": "Instructor 3", "image": "/images/home/profile-3.png" }
     ]
   },
   {
-    "image": "/images/Frame-5.png",
+    "image": "/images/home/money-management.png",
+    "category": "finance",
     "title": "Mastering Money Management",
     "instructor": "purepearl studio",
     "instructorHref": "/instructors/purepearl-studio",
@@ -84,13 +89,14 @@
     "price": 25,
     "href": "/courses/mastering-money-management",
     "instructors": [
-      { "name": "Instructor 1", "image": "/images/Image.png" },
-      { "name": "Instructor 2", "image": "/images/Image-1.png" },
-      { "name": "Instructor 3", "image": "/images/Image-2.png" }
+      { "name": "Instructor 1", "image": "/images/home/profile-1.png" },
+      { "name": "Instructor 2", "image": "/images/home/profile-2.png" },
+      { "name": "Instructor 3", "image": "/images/home/profile-3.png" }
     ]
   },
   {
-    "image": "/images/Frame-6.png",
+    "image": "/images/home/start-up.png",
+    "category": "business",
     "title": "From Idea to Startup Success",
     "instructor": "purepearl studio",
     "instructorHref": "/instructors/purepearl-studio",
@@ -102,9 +108,9 @@
     "price": 25,
     "href": "/courses/from-idea-to-startup-success",
     "instructors": [
-      { "name": "Instructor 1", "image": "/images/Image.png" },
-      { "name": "Instructor 2", "image": "/images/Image-1.png" },
-      { "name": "Instructor 3", "image": "/images/Image-2.png" }
+      { "name": "Instructor 1", "image": "/images/home/profile-1.png" },
+      { "name": "Instructor 2", "image": "/images/home/profile-2.png" },
+      { "name": "Instructor 3", "image": "/images/home/profile-3.png" }
     ]
   }
 ]
