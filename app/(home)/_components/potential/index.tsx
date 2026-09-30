@@ -3,7 +3,7 @@ import Ornaments from "./ornaments"
 export default function Potential() {
   return (
     <section className="relative isolate overflow-hidden bg-primary-700 grid-background">
-      <div className="relative z-10 container flex flex-col items-center space-y-6 px-[clamp(1.25rem,6vw,7.625rem)] py-12 md:space-y-8 md:md:px-[revert] md:py-16 lg:space-y-10 lg:py-21.25">
+      <div className="relative z-10 container flex max-w-6xl flex-col items-center space-y-6 px-[clamp(1.25rem,6vw,7.625rem)] py-12 md:space-y-8 md:md:px-[revert] md:py-16 lg:space-y-10 lg:py-21.25">
         <div className="mx-auto max-w-2xl">
           <h1
             className="text-center heading-m text-neutral-50"

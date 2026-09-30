@@ -7,7 +7,7 @@ import NavMenu from "./nav-menu"
 export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <div className="container flex items-center justify-between px-5! py-5 md:px-8! md:py-6 lg:px-[revert]! lg:pt-8.75 lg:pb-11.75">
+      <div className="p container flex items-center justify-between py-5 md:py-6 lg:pt-8.75 lg:pb-11.75">
         <Link href="/" className="flex items-baseline gap-[8.12px]">
           <Icon
             src="/icons/logo.svg"

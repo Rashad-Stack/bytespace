@@ -2,7 +2,7 @@ import Icon from "@/components/shared/icon"
 
 export default function FeaturedCategory() {
   return (
-    <div className="mt-18">
+    <div className="my-18">
       <div className="mx-auto max-w-242.75 space-y-4 text-center">
         <h2 className="heading-s">
           Explore Diverse Learning Paths at Bytespace
@@ -21,7 +21,9 @@ export default function FeaturedCategory() {
             key={category.title}
             className="flex h-41.75 w-41.75 flex-col items-center justify-center gap-4 rounded-[24px] border"
           >
-            <Icon src={category.icon} />
+            <span className="rounded-full bg-secondary p-3">
+              <Icon src={category.icon} wrapper="span" />
+            </span>
             <h3 className="label-xl">{category.title}</h3>
           </div>
         ))}

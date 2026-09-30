@@ -1,5 +1,6 @@
 "use client"
 
+import { Button } from "@/components/animate-ui/components/buttons/button"
 import Icon from "@/components/shared/icon"
 import { Field, FieldGroup } from "@/components/ui/field"
 import {
@@ -25,7 +26,7 @@ export default function SearchForm() {
           control={form.control}
           render={({ field, fieldState }) => (
             <Field className="min-w-0 flex-1" data-invalid={fieldState.invalid}>
-              <InputGroup className="h-11 w-full rounded-full bg-white px-4 py-2.5 md:h-13 md:px-6 md:py-3">
+              <InputGroup className="h-11 w-full rounded-full bg-white px-4 md:px-6">
                 <InputGroupAddon>
                   <Icon
                     src="/icons/search.svg"
@@ -50,13 +51,9 @@ export default function SearchForm() {
           )}
         />
 
-        <button
-          className="h-11 shrink-0 cursor-pointer rounded-full bg-secondary px-4 py-2.5 body-l font-medium text-neutral-950 max-sm:w-full md:h-13 md:px-6 md:py-3"
-          style={{ fontSize: "clamp(0.8125rem, 2vw, 18px)" }}
-          type="submit"
-        >
+        <Button type="submit" variant="secondary" size="lg">
           Search
-        </button>
+        </Button>
       </FieldGroup>
     </form>
   )
