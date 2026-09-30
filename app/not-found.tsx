@@ -1,4 +1,5 @@
 import { Button } from "@/components/animate-ui/components/buttons/button"
+import { cn } from "cn"
 import { Poppins } from "next/font/google"
 
 const poppins = Poppins({
@@ -9,7 +10,10 @@ const poppins = Poppins({
 export default function NotFound() {
   return (
     <section
-      className={`${poppins.className} h-screen bg-primary-700 grid-background`}
+      className={cn(
+        "h-screen bg-primary-700 grid-background",
+        poppins.className
+      )}
     >
       <div className="relative flex h-[80%] flex-col items-center justify-center text-white">
         <h1 className="absolute z-10 bg-[linear-gradient(to_bottom,#D4FB20_0%,#D4FB20F5_25%,#D4FB20CF_50%,#D4FB209C_68%,#FFFFFF00_100%)] bg-clip-text text-[480px] font-bold text-transparent">
