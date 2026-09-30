@@ -1,3 +1,4 @@
+import About from "./_components/about"
 import Courses from "./_components/courses"
 import Hero from "./_components/hero"
 import Partners from "./_components/partners"
@@ -9,6 +10,7 @@ export default function Page() {
       <Hero />
       <Partners />
       <Courses />
+      <About />
       <Potential />
     </main>
   )
