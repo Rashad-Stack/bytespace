@@ -71,11 +71,11 @@ export default function Ornaments() {
           src="/images/home/hero-person.png"
           width={578}
           height={541}
-          className="absolute bottom-0 left-1/2 translate-x-[-42%]"
+          className="absolute -bottom-3 left-1/2 h-135.25 w-144.5 translate-x-[-42%] scale-128 object-contain object-center"
           priority
         />
 
-        <div className="absolute bottom-77.75 left-62.25 w-54 rounded-[16px] bg-white p-4 backdrop-blur-[10px]">
+        <div className="absolute bottom-77.75 left-60 w-54 rounded-[16px] bg-white p-4 backdrop-blur-[10px]">
           <p className="body-m font-medium text-neutral-950">UI/UX Design</p>
           <p className="body-xs text-neutral-400">
             200 Courses <span className="mx-2">•</span> 1000+ Students
@@ -94,7 +94,7 @@ export default function Ornaments() {
           </div>
         </div>
 
-        <div className="absolute bottom-15 left-50 rounded-[16px] bg-white p-4 backdrop-blur-[10px]">
+        <div className="absolute bottom-17 left-40 rounded-[16px] bg-white p-4 backdrop-blur-[10px]">
           <p className="body-m font-medium text-neutral-950">Happy Students</p>
           <p className="flex items-center gap-1 body-xs text-neutral-950">
             <span> 4.5 </span>
