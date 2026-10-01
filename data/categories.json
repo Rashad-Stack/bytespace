@@ -1,28 +1,92 @@
 [
-  { "name": "Design", "value": "design", "isFeatured": true, "icon": "/icons/design.svg" },
-  { "name": "Development", "value": "development", "isFeatured": true, "icon": "/icons/development.svg" },
-  { "name": "IT & Software", "value": "it-software", "isFeatured": true, "icon": "/icons/it-software.svg" },
-  { "name": "Business", "value": "business", "isFeatured": true, "icon": "/icons/business.svg" },
-  { "name": "Marketing", "value": "marketing", "isFeatured": true, "icon": "/icons/marketing.svg" },
-  { "name": "Photography", "value": "photography", "isFeatured": true, "icon": "/icons/photography.svg" },
-  { "name": "Music", "value": "music", "isFeatured": false },
-  { "name": "Drawing & Painting", "value": "drawing-painting", "isFeatured": false },
-  { "name": "Animation", "value": "animation", "isFeatured": false },
-  { "name": "Social Media", "value": "social-media", "isFeatured": false },
-  { "name": "UI/UX Design", "value": "ui-ux-design", "isFeatured": false },
-  { "name": "Creative Marketing", "value": "creative-marketing", "isFeatured": false },
-  { "name": "Digital Illustration", "value": "digital-illustration", "isFeatured": false },
+  {
+    "name": "Featured",
+    "value": "featured",
+    "isFeatured": true,
+    "icon": "/icons/featured.svg"
+  },
+  {
+    "name": "Design",
+    "value": "design",
+    "isFeatured": false,
+    "icon": "/icons/design.svg"
+  },
+  {
+    "name": "Development",
+    "value": "development",
+    "isFeatured": false,
+    "icon": "/icons/development.svg"
+  },
+  {
+    "name": "IT & Software",
+    "value": "it-software",
+    "isFeatured": false,
+    "icon": "/icons/it-software.svg"
+  },
+  {
+    "name": "Business",
+    "value": "business",
+    "isFeatured": false,
+    "icon": "/icons/business.svg"
+  },
+  {
+    "name": "Marketing",
+    "value": "marketing",
+    "isFeatured": true,
+    "icon": "/icons/marketing.svg"
+  },
+  {
+    "name": "Photography",
+    "value": "photography",
+    "isFeatured": false,
+    "icon": "/icons/photography.svg"
+  },
+  { "name": "Music", "value": "music", "isFeatured": true },
+  {
+    "name": "Drawing & Painting",
+    "value": "drawing-painting",
+    "isFeatured": true
+  },
+  { "name": "Animation", "value": "animation", "isFeatured": true },
+  { "name": "Social Media", "value": "social-media", "isFeatured": true },
+  { "name": "UI/UX Design", "value": "ui-ux-design", "isFeatured": true },
+  {
+    "name": "Creative Marketing",
+    "value": "creative-marketing",
+    "isFeatured": true
+  },
+  {
+    "name": "Digital Illustration",
+    "value": "digital-illustration",
+    "isFeatured": false
+  },
   { "name": "Film & Video", "value": "film-video", "isFeatured": false },
   { "name": "Crafts", "value": "crafts", "isFeatured": false },
-  { "name": "Freelance & Entrepreneurship", "value": "freelance-entrepreneurship", "isFeatured": false },
+  {
+    "name": "Freelance & Entrepreneurship",
+    "value": "freelance-entrepreneurship",
+    "isFeatured": false
+  },
   { "name": "Graphic Design", "value": "graphic-design", "isFeatured": false },
   { "name": "Productivity", "value": "productivity", "isFeatured": false },
-  { "name": "Web Development", "value": "web-development", "isFeatured": false },
+  {
+    "name": "Web Development",
+    "value": "web-development",
+    "isFeatured": false
+  },
   { "name": "Data Science", "value": "data-science", "isFeatured": false },
-  { "name": "Cooking", "value": "cooking", "isFeatured": false },
-  { "name": "Personal Development", "value": "personal-development", "isFeatured": false },
+  { "name": "Cooking", "value": "cooking", "isFeatured": true },
+  {
+    "name": "Personal Development",
+    "value": "personal-development",
+    "isFeatured": false
+  },
   { "name": "Finance", "value": "finance", "isFeatured": false },
   { "name": "Lifestyle", "value": "lifestyle", "isFeatured": false },
-  { "name": "Health & Fitness", "value": "health-fitness", "isFeatured": false },
+  {
+    "name": "Health & Fitness",
+    "value": "health-fitness",
+    "isFeatured": false
+  },
   { "name": "Software", "value": "software", "isFeatured": false }
 ]
