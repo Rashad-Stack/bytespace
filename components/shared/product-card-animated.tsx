@@ -1,8 +1,8 @@
 "use client"
 
+import { TProductCardProps } from "@/types/product"
 import { motion } from "motion/react"
 import ProductCard from "./product-card"
-import { TProductCardProps } from "@/types/product"
 
 interface Props {
   payload: TProductCardProps
@@ -22,7 +22,7 @@ export default function ProductCardAnimated({ payload, index = 0 }: Props) {
       }}
       whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
     >
-      <ProductCard payload={payload} />
+      <ProductCard payload={payload} loading={index < 2 ? "eager" : "lazy"} />
     </motion.div>
   )
 }

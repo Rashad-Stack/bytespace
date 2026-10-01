@@ -5,32 +5,35 @@ import Link from "next/link"
 
 export default function ProductCard({
   payload,
+  loading = "lazy",
 }: {
   payload: TProductCardProps
+  loading?: "eager" | "lazy"
 }) {
   return (
     <article className="mx-auto w-full max-w-105 rounded-[24px] border border-neutral-200 bg-white p-3.5 sm:p-4">
       <Link href={payload.href} className="block">
-        <div className="relative h-50 sm:h-55 overflow-hidden rounded-[12px]">
+        <div className="relative h-50 overflow-hidden rounded-[12px] sm:h-55">
           <Image
             src={payload.image}
             alt={payload.title}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 420px"
+            loading={loading}
           />
 
-          <div className="absolute bottom-3 sm:bottom-4 inset-x-1.5 sm:inset-x-2 flex items-baseline justify-center">
-            <div className="flex w-fit items-center justify-between gap-1 sm:gap-2 px-0.5 text-nowrap">
-              <span className="rounded-full bg-white/35 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:label-xs backdrop-blur-sm">
+          <div className="absolute inset-x-1.5 bottom-3 flex items-baseline justify-center sm:inset-x-2 sm:bottom-4">
+            <div className="flex w-fit items-center justify-between gap-1 px-0.5 text-nowrap sm:gap-2">
+              <span className="rounded-full bg-white/35 px-2.5 py-1.5 text-[10px] backdrop-blur-sm sm:px-4 sm:py-2 sm:label-xs">
                 {payload.lessons} Lessons
               </span>
 
-              <span className="rounded-full bg-white/35 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:label-xs backdrop-blur-sm">
+              <span className="rounded-full bg-white/35 px-2.5 py-1.5 text-[10px] backdrop-blur-sm sm:px-4 sm:py-2 sm:label-xs">
                 {payload.duration}
               </span>
 
-              <span className="rounded-full bg-white/35 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:label-xs backdrop-blur-sm">
+              <span className="rounded-full bg-white/35 px-2.5 py-1.5 text-[10px] backdrop-blur-sm sm:px-4 sm:py-2 sm:label-xs">
                 {payload.comments} Comments
               </span>
             </div>
