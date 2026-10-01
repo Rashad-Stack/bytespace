@@ -1,19 +1,6 @@
-"use client"
-
-import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
-import { Controller, useForm } from "react-hook-form"
-import { z } from "zod"
-
-import { Button } from "../animate-ui/components/buttons/button"
-import { Field, FieldError, FieldGroup } from "../ui/field"
-import { Input } from "../ui/input"
-import Icon from "./icon"
 import Logo from "./logo"
-
-const formSchema = z.object({
-  email: z.email("Please enter a valid email address."),
-})
+import Search from "./search"
 
 const footerColumns = [
   {
@@ -52,18 +39,6 @@ const legalLinks = [
 ]
 
 export default function Footer() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-    },
-  })
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data)
-    form.reset()
-  }
-
   return (
     <footer className="border-t border-neutral-200">
       <div className="container py-10 md:py-20">
@@ -78,38 +53,7 @@ export default function Footer() {
               our newsletter.
             </p>
 
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="mt-11 flex max-w-111.25 flex-col gap-4 sm:flex-row"
-            >
-              <FieldGroup className="min-w-0 flex-1">
-                <Controller
-                  name="email"
-                  control={form.control}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <Input
-                        {...field}
-                        id="footer-email"
-                        type="email"
-                        aria-invalid={fieldState.invalid}
-                        placeholder="Enter your email"
-                        autoComplete="email"
-                        className="h-11 rounded-full px-6 py-4.5"
-                      />
-
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
-              </FieldGroup>
-
-              <Button type="submit" variant="secondary" size="lg">
-                Search
-              </Button>
-            </form>
+            <Search variant="footer" className="mt-11 max-w-111.25" />
 
             <p className="mt-6 max-w-111.25 body-xs">
               By subscribing, you agree to our Privacy Policy and consent to
