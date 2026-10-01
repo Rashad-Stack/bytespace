@@ -32,12 +32,13 @@ ByteSpace is a full-stack-ready frontend for a modern e-learning marketplace. It
 - **Category Tabs** — Featured categories with icon-driven navigation and a "see all" overflow list
 - **Course Detail Pages** — Video player preview, instructor info, star ratings, lesson breakdown, and a full reviews tab
 - **Full-Text Search** — Hero-mounted search bar with a variant system for both global and contextual search
-- **Creator Profiles** — Dedicated `/creators` listing with instructor cards
+- **Creator Profiles** — Dedicated `/creators` listing with instructor cards and animated profile hero
 - **Authentication Flows** — Sign-in and sign-up pages with social login (Google, Facebook) and validated form fields
 - **Dark / Light Theme** — System-aware with an explicit toggle; zero flash on load
 - **Responsive Layout** — Mobile-first with a collapsible hamburger menu and fluid type scaling using `clamp()`
 - **Star Rating System** — Composite rating component with visual breakdown and summary statistics
 - **Pagination** — Client-side pagination on the courses listing
+- **Scroll-triggered Animations** — Every section animates in on scroll using Motion; hero content staggers on mount; rating and progress bars fill with motion; nav active state springs into position
 
 ---
 
@@ -51,14 +52,32 @@ bytespace/
 │   │   └── sign-up/
 │   ├── (main)/                   # Route group: main app with navbar + footer
 │   │   ├── (home)/               # Landing page with Hero, Partners, Courses, About, Potential
+│   │   │   └── _components/
+│   │   │       ├── hero/         # hero-content.tsx — animated client wrapper
+│   │   │       ├── courses/      # featured-category-grid.tsx — animated category tiles
+│   │   │       ├── partners/     # animated partner logos
+│   │   │       └── potential/    # staggered CTA section
 │   │   ├── courses/              # Course listing + dynamic [courseId] detail pages
+│   │   │   └── [courseId]/
+│   │   │       └── _components/
+│   │   │           ├── hero/     # hero-animated.tsx — staggered mount animations
+│   │   │           └── details/  # about-tab, lessons-tab, reviews-tab — all animated
 │   │   └── creators/             # Creator directory
+│   │       └── _components/
+│   │           └── creators-client.tsx  # animated creator hero + course grid
 │   ├── layout.tsx                # Root layout (fonts, theme provider, global styles)
 │   ├── globals.css               # Tailwind base + custom design tokens
 │   └── not-found.tsx             # 404 page
 │
 ├── components/
+│   ├── motion/                   # Reusable animation primitives
+│   │   ├── fade-up.tsx           # Scroll-triggered fade-up wrapper
+│   │   └── slide-in.tsx          # Scroll-triggered directional slide wrapper
 │   ├── shared/                   # Cross-page components (Header, Footer, Search, ProductCard, etc.)
+│   │   ├── product-card-animated.tsx  # Animated card wrapper with hover lift
+│   │   ├── about-section.tsx     # Slide-in from opposite sides on scroll
+│   │   ├── section-heading.tsx   # Fade-up title + description
+│   │   └── nav-link.tsx          # Spring-animated active margin-top
 │   ├── ui/                       # Primitive UI components (Button, Input, Badge, Avatar, etc.)
 │   ├── Modal/                    # URL-driven modal system with search param state
 │   └── theme-provider.tsx        # next-themes wrapper
@@ -133,6 +152,34 @@ bun start
 
 ---
 
+## 🎬 Animation Architecture
+
+All animations use `motion/react` (the `motion` package, Framer Motion's current form). The strategy keeps every page and layout as a **Server Component** and pushes `"use client"` only to the smallest possible leaf wrappers.
+
+### Pattern used across the site
+
+| Pattern | Where |
+|---|---|
+| **Staggered mount** — `variants` container + children, `staggerChildren` | Hero (home + course detail), Potential CTA, Creator hero |
+| **Scroll-triggered fade-up** — `whileInView` + `viewport: { once: true }` | SectionHeading, Partners, About section |
+| **Directional slide-in** — `x: ±48` on scroll | `AboutSection` — text slides from left, image from right (flipped by `reverse` prop) |
+| **Staggered grid entrance** — `whileInView` per card, delay by `index % 3` | All `ProductCard` grids (home, courses page, creators page) |
+| **Hover lift** — `whileHover: { y: -6 }` | Product cards, partner logos, category tiles |
+| **Animated bar fill** — `width: 0 → N%` triggered by `useInView` | Lessons progress bar, rating breakdown bars |
+| **Spring nav indicator** — `animate: { marginTop }`, spring transition | Active nav link springs up/down on route change |
+
+### Client boundary placement
+
+```
+Page (Server Component)
+└── AnimatedWrapper (Client — "use client")   ← boundary lives here
+    └── ContentComponent (Server-renderable)  ← stays server-safe
+```
+
+Reusable wrappers (`FadeUp`, `SlideIn`, `ProductCardAnimated`) accept children or a `payload` prop, keeping the animation concern fully separate from content.
+
+---
+
 ## 🧩 Case Study
 
 ### 🎯 Project Goals & Context
@@ -160,6 +207,15 @@ Inline SVGs as React components (via `@svgr/webpack`) don't work out of the box 
 **5. Dark theme consistency across Base UI and shadcn primitives**  
 Base UI and shadcn both ship with their own CSS variable conventions. Reconciling two variable namespaces so that a single `data-theme` toggle updated all components without overrides leaking was a CSS specificity puzzle.
 
+**6. Animating without breaking Server Components**  
+Adding Motion animations to a Next.js App Router app meant every animated element needed `"use client"`, which would have forced entire pages to become client-rendered if applied naively. The challenge was threading animations through the tree without losing server rendering.
+
+**7. TypeScript strict typing for Motion bezier easings**  
+Motion's `Variants` type does not accept a plain `number[]` for `ease` inside per-variant transitions — it requires a `[number, number, number, number]` tuple. This caused silent type errors that only surfaced during `tsc --noEmit`.
+
+**8. Nav active state causing a layout jump**  
+The active nav link used `-mt-1.5` (a raw margin-top class) to visually lift it. Switching routes applied this class instantly with no transition, causing a jarring vertical snap.
+
 ---
 
 ### 💡 How the Problems Were Solved
@@ -174,6 +230,12 @@ Base UI and shadcn both ship with their own CSS variable conventions. Reconcilin
 
 **Theme reconciliation** was addressed by mapping both Base UI and shadcn's primitive variables onto a single shared token layer defined on `:root`. Both systems now reference the same surface and foreground tokens, so `data-theme="dark"` flips one set of CSS variables and everything follows.
 
+**Server Component boundary** was preserved by creating thin `"use client"` wrapper components (`HeroContent`, `ProductCardAnimated`, `FeaturedCategoryGrid`, `CreatorsClient`, etc.) that accept server-safe props (plain data, children) and apply Motion animations. Pages remain Server Components; the client boundary lives at the leaf.
+
+**Bezier type error** was fixed by casting the easing array as `as [number, number, number, number]` — a TypeScript const tuple assertion that satisfies Motion's `BezierDefinition` type without losing the actual values.
+
+**Nav spring animation** replaced the Tailwind class approach with a `motion.div` wrapper around each `NavLink` that animates `marginTop` between `0` and `-6` using a spring (`stiffness: 400, damping: 30`). The active state now eases in and out naturally on route change instead of snapping.
+
 ---
 
 ### 📚 What I Learned
@@ -183,6 +245,8 @@ Base UI and shadcn both ship with their own CSS variable conventions. Reconcilin
 - **`clamp()` for fluid type** eliminates a whole class of responsive breakpoint decisions and makes the design feel more native to the browser's own scaling model.
 - **Strict TypeScript from the data layer up** (typing the JSON files through `d.ts` declarations) catches shape mismatches at build time rather than runtime, which pays dividends quickly on a data-driven UI.
 - **Base UI vs. shadcn** — Base UI is less opinionated about styling; shadcn ships with more ready-made components. The combination works well when Base UI handles complex interaction primitives and shadcn handles simpler form controls.
+- **Motion's `whileInView` is not a substitute for `useInView` when you need to drive non-motion elements** — for the progress bar and rating bars, `useInView` with a ref gave precise control over when the `width` animation triggered, whereas `whileInView` only works on the `motion` element itself.
+- **Keeping animations out of Server Components requires discipline** — it's tempting to add `"use client"` to a parent to save a file, but each boundary you push up the tree removes SSR benefits from everything below it.
 
 ---
 
