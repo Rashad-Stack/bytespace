@@ -16,14 +16,17 @@ type SearchFormValues = z.infer<typeof searchFormSchema>
 
 type Variant = "hero" | "courses" | "footer"
 
-const variantConfig: Record<Variant, {
-  icon: string
-  inputType: string
-  placeholder: string
-  autoComplete: string
-  buttonLabel: string
-  formClassName: string
-}> = {
+const variantConfig: Record<
+  Variant,
+  {
+    icon: string
+    inputType: string
+    placeholder: string
+    autoComplete: string
+    buttonLabel: string
+    formClassName: string
+  }
+> = {
   hero: {
     icon: "/icons/search.svg",
     inputType: "search",
@@ -56,7 +59,11 @@ interface SearchProps {
   onSearch?: (query: string) => void
 }
 
-export default function Search({ variant = "hero", className, onSearch }: SearchProps) {
+export default function Search({
+  variant = "hero",
+  className,
+  onSearch,
+}: SearchProps) {
   const config = variantConfig[variant]
 
   const form = useForm<SearchFormValues>({
@@ -84,7 +91,10 @@ export default function Search({ variant = "hero", className, onSearch }: Search
             <Field className="min-w-0 flex-1" data-invalid={fieldState.invalid}>
               <InputGroup className="h-11 w-full rounded-full bg-white px-4 md:px-6">
                 <InputGroupAddon>
-                  <Icon src={config.icon} className="size-5 shrink-0 md:size-6" />
+                  <Icon
+                    src={config.icon}
+                    className="size-5 shrink-0 md:size-6"
+                  />
                 </InputGroupAddon>
                 <InputGroupInput
                   {...field}
@@ -94,14 +104,18 @@ export default function Search({ variant = "hero", className, onSearch }: Search
                   placeholder={config.placeholder}
                   autoComplete={config.autoComplete}
                   className="min-w-0 flex-1 body-l placeholder:body-l"
-                  style={{ fontSize: "clamp(0.8125rem, 2vw, 18px)", width: "100%", minWidth: 0 }}
+                  style={{
+                    fontSize: "clamp(0.8125rem, 2vw, 18px)",
+                    width: "100%",
+                    minWidth: 0,
+                  }}
                 />
               </InputGroup>
             </Field>
           )}
         />
 
-        <Button type="submit" variant="secondary" size="lg">
+        <Button type="submit" variant="secondary" size="lg" className="w-full sm:w-auto">
           {config.buttonLabel}
         </Button>
       </FieldGroup>
