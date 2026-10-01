@@ -65,9 +65,7 @@ export default function Details() {
 
       <p className="my-6 body-m text-neutral-700">{hero.callToAction}</p>
 
-      <button className="cursor-pointer rounded-full border border-neutral-200 px-4 py-2 label-m text-neutral-700">
-        See Full Profile
-      </button>
+      <Button variant="outline" size="sm">See Full Profile</Button>
     </div>
   )
 }

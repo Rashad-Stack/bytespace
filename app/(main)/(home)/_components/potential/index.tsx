@@ -1,3 +1,4 @@
+import { Button } from "@/components/animate-ui/components/buttons/button"
 import Ornaments from "./ornaments"
 
 export default function Potential() {
@@ -29,9 +30,7 @@ export default function Potential() {
           course on the ByteSpace Course Library.
         </p>
 
-        <button className="cursor-pointer rounded-full bg-secondary px-5 py-2.5 body-l text-sm font-medium text-neutral-950 md:px-6 md:py-3 md:text-base">
-          Join as Creator
-        </button>
+        <Button variant="secondary">Join as Creator</Button>
       </div>
 
       <Ornaments />
