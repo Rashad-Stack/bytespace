@@ -26,6 +26,7 @@ export default function AuthPageLayout({
                   src="/images/auth/auth.png"
                   alt="Auth illustration"
                   fill
+                  sizes="(min-width: 1024px) 492px, 0px"
                   className="object-fill object-center"
                 />
               </div>
