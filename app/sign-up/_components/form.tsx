@@ -18,7 +18,7 @@ export default function Form() {
     <form
       id="form-rhf-demo"
       onSubmit={form.handleSubmit(onSubmit)}
-      className="rounded-[24px] bg-white p-10"
+      className="rounded-[24px] bg-white p-6 sm:p-8 lg:p-10"
     >
       <p className="body-l text-primary-800">Create an Account</p>
       <h4 className="heading-m text-neutral-950">Welcome to ByteSpace</h4>

@@ -4,10 +4,10 @@ import Form from "./_components/form"
 export default function SignUp() {
   return (
     <main>
-      <section className="isolate min-h-dvh bg-primary-700 grid-background pt-30">
+      <section className="isolate min-h-dvh bg-primary-700 grid-background pt-20 sm:pt-24 md:pt-28 lg:pt-30">
         <div className="container">
           <div className="flex items-stretch justify-between">
-            <div className="max-w-123 flex-1">
+            <div className="hidden lg:flex max-w-123 flex-1 flex-col">
               <h6 className="heading-xs text-neutral-50">
                 Sign up and come in
               </h6>
@@ -27,7 +27,7 @@ export default function SignUp() {
               </div>
             </div>
 
-            <div className="max-w-144.75 flex-1">
+            <div className="w-full max-w-full lg:max-w-144.75 lg:flex-1 mx-auto lg:mx-0">
               <Form />
             </div>
           </div>
