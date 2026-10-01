@@ -2,11 +2,14 @@ import Icon from "@/components/shared/icon"
 
 export default function Partners() {
   return (
-    <section className="bg-neutral-50 py-6">
-      <div className="fle container flex flex-wrap items-center justify-between gap-16 py-20">
+    <section className="bg-neutral-50 py-4 sm:py-6">
+      <div className="container flex flex-wrap items-center justify-center sm:justify-between gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 py-8 sm:py-12 md:py-16 xl:py-20">
         {partners.map((partner) => (
           <div key={partner.id} className="flex items-center justify-center">
-            <Icon src={partner.logo} />
+            <Icon
+              src={partner.logo}
+              className="h-auto w-24 sm:w-28 md:w-36 lg:w-40 xl:w-auto max-w-full"
+            />
           </div>
         ))}
       </div>
