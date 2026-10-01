@@ -2,7 +2,7 @@ import SectionHeading from "@/components/shared/section-heading"
 import CATEGORIES from "@/data/categories.json"
 import FeaturedCategoryGrid from "./featured-category-grid"
 
-const featuredCategories = CATEGORIES.filter((c) => c.isFeatured && c.icon)
+const featuredCategories = CATEGORIES.filter((c) => c.icon)
 
 export default function FeaturedCategory() {
   return (

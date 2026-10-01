@@ -1,5 +1,10 @@
 [
   {
+    "name": "Featured",
+    "value": "featured",
+    "isFeatured": true
+  },
+  {
     "name": "Design",
     "value": "design",
     "isFeatured": false,
