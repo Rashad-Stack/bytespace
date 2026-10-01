@@ -1,8 +1,6 @@
 import { Poppins } from "next/font/google"
 import localFont from "next/font/local"
 
-import Footer from "@/components/shared/footer"
-import Header from "@/components/shared/header"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { Metadata } from "next"
@@ -59,11 +57,7 @@ export default function RootLayout({
       )}
     >
       <body cz-shortcut-listen="true">
-        <ThemeProvider>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   )
