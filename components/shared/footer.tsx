@@ -9,6 +9,7 @@ import { Button } from "../animate-ui/components/buttons/button"
 import { Field, FieldError, FieldGroup } from "../ui/field"
 import { Input } from "../ui/input"
 import Icon from "./icon"
+import Logo from "./logo"
 
 const formSchema = z.object({
   email: z.email("Please enter a valid email address."),
@@ -69,15 +70,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.5fr)] md:gap-20">
           <div>
             <div className="w-fit">
-              <Link href="/" className="flex items-baseline gap-[8.12px]">
-                <Icon
-                  src="/icons/logo.svg"
-                  className="h-6 w-5.5 md:h-[31.5px] md:w-[28.875px]"
-                />
-                <span className="font-clash-display text-xl font-bold text-neutral-950 md:text-2xl">
-                  ByteSpace
-                </span>
-              </Link>
+              <Logo variant="dark" />
             </div>
 
             <p className="mt-4 body-s">
