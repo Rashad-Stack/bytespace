@@ -21,9 +21,9 @@ export default function CategoryTab() {
     : CATEGORIES.slice(0, 18)
 
   return (
-    <div className="my-10.5 w-full">
+    <div className="my-6 sm:my-8 md:my-10.5 w-full">
       <Tabs defaultValue={CATEGORIES[0].value}>
-        <TabsList className="mx-auto mb-19.25 flex w-full max-w-271.5 flex-wrap justify-center gap-4">
+        <TabsList className="mx-auto mb-8 sm:mb-12 md:mb-16 xl:mb-19.25 flex w-full max-w-271.5 flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
           {visibleCategories.map((category) => (
             <TabsTrigger key={category.value} value={category.value}>
               {category.name}
@@ -41,7 +41,7 @@ export default function CategoryTab() {
         <TabsContents>
           {CATEGORIES.map((category) => (
             <TabsContent key={category.value} value={category.value}>
-              <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
                 {COURSES.map((course) => (
                   <ProductCard key={course.href} payload={course} />
                 ))}

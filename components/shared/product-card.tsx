@@ -9,9 +9,9 @@ export default function ProductCard({
   payload: TProductCardProps
 }) {
   return (
-    <article className="w-full max-w-105 rounded-[24px] border border-neutral-200 bg-white p-4">
+    <article className="mx-auto w-full max-w-105 rounded-[24px] border border-neutral-200 bg-white p-3.5 sm:p-4">
       <Link href={payload.href} className="block">
-        <div className="relative h-55 overflow-hidden rounded-[12px]">
+        <div className="relative h-50 sm:h-55 overflow-hidden rounded-[12px]">
           <Image
             src={payload.image}
             alt={payload.title}
@@ -20,17 +20,17 @@ export default function ProductCard({
             sizes="(max-width: 768px) 100vw, 420px"
           />
 
-          <div className="absolute bottom-4 flex items-baseline justify-center">
-            <div className="flex w-fit items-center justify-between gap-2 px-1 text-nowrap">
-              <span className="rounded-full bg-white/35 px-4 py-2 label-xs backdrop-blur-sm">
+          <div className="absolute bottom-3 sm:bottom-4 inset-x-1.5 sm:inset-x-2 flex items-baseline justify-center">
+            <div className="flex w-fit items-center justify-between gap-1 sm:gap-2 px-0.5 text-nowrap">
+              <span className="rounded-full bg-white/35 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:label-xs backdrop-blur-sm">
                 {payload.lessons} Lessons
               </span>
 
-              <span className="rounded-full bg-white/35 px-4 py-2 label-xs backdrop-blur-sm">
+              <span className="rounded-full bg-white/35 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:label-xs backdrop-blur-sm">
                 {payload.duration}
               </span>
 
-              <span className="rounded-full bg-white/35 px-4 py-2 label-xs backdrop-blur-sm">
+              <span className="rounded-full bg-white/35 px-2.5 sm:px-4 py-1.5 sm:py-2 text-[10px] sm:label-xs backdrop-blur-sm">
                 {payload.comments} Comments
               </span>
             </div>

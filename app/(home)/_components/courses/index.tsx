@@ -5,7 +5,7 @@ import Heading from "./heading"
 export default function Courses() {
   return (
     <section>
-      <div className="container pt-18">
+      <div className="container pt-10 sm:pt-14 md:pt-18">
         <Heading />
         <CategoryTab />
         <FeaturedCategory />
