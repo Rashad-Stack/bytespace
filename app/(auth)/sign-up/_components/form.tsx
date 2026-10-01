@@ -1,15 +1,9 @@
 "use client"
 
 import { Button } from "@/components/animate-ui/components/buttons/button"
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import FormField from "@/components/shared/form-field"
+import { FieldGroup } from "@/components/ui/field"
 import Link from "next/link"
-import { Controller } from "react-hook-form"
 import useSignUp from "./use-sign-up"
 
 export default function Form() {
@@ -24,77 +18,9 @@ export default function Form() {
       <h4 className="heading-m text-neutral-950">Welcome to ByteSpace</h4>
 
       <FieldGroup className="mt-10">
-        <Controller
-          name="fullName"
-          control={form.control}
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel
-                htmlFor={field.name}
-                className="label-s text-neutral-950"
-              >
-                Full Name
-              </FieldLabel>
-              <Input
-                {...field}
-                id={field.name}
-                aria-invalid={fieldState.invalid}
-                placeholder="Jamie Davis"
-                autoComplete="off"
-                className="h-11 border border-neutral-100 px-6 py-3 body-l text-neutral-950 placeholder:body-l placeholder:text-neutral-400"
-              />
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
-
-        <Controller
-          name="email"
-          control={form.control}
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel
-                htmlFor={field.name}
-                className="label-s text-neutral-950"
-              >
-                Email
-              </FieldLabel>
-              <Input
-                {...field}
-                id={field.name}
-                aria-invalid={fieldState.invalid}
-                placeholder="designer@example.com"
-                autoComplete="off"
-                className="h-11 border border-neutral-100 px-6 py-3 body-l text-neutral-950 placeholder:body-l placeholder:text-neutral-400"
-              />
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
-
-        <Controller
-          name="password"
-          control={form.control}
-          render={({ field, fieldState }) => (
-            <Field data-invalid={fieldState.invalid}>
-              <FieldLabel
-                htmlFor={field.name}
-                className="label-s text-neutral-950"
-              >
-                Password
-              </FieldLabel>
-              <Input
-                {...field}
-                id={field.name}
-                aria-invalid={fieldState.invalid}
-                placeholder="********"
-                autoComplete="off"
-                className="h-11 border border-neutral-100 px-6 py-3 body-l text-neutral-950 placeholder:body-l placeholder:text-neutral-400"
-              />
-              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-            </Field>
-          )}
-        />
+        <FormField form={form} name="fullName" label="Full Name" placeholder="Jamie Davis" />
+        <FormField form={form} name="email" label="Email" placeholder="designer@example.com" type="email" />
+        <FormField form={form} name="password" label="Password" placeholder="********" type="password" />
 
         <Button variant="secondary" type="submit" className="ml-auto w-fit">
           Continue
