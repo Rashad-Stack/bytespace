@@ -67,7 +67,8 @@
       }
     ],
     "content": "Engage with each lesson through captivating video content, detailed textual explanations, and interactive elements. Download resources, complete assignments, and test your understanding with quizzes.",
-    "progress": "Witness your growth as you complete lessons, with an intuitive progress tracking feature guiding you through your learning journey."
+    "tracking": "Witness your growth as you complete lessons, with an intuitive progress tracking feature guiding you through your learning journey.",
+    "progress": 55
   },
   "review": {
     "sectionTitle": "What Learners Are Saying",

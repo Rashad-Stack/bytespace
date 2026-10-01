@@ -94,9 +94,23 @@ export default function Details() {
                   Lesson Progress Tracking
                 </h4>
                 <p className="mt-6 body-m whitespace-pre-line text-neutral-700">
-                  {DETAILS.lesson.progress}
+                  {DETAILS.lesson.tracking}
                 </p>
+
+                <div className="mt-6 w-full space-y-2 rounded-[16px] border p-4">
+                  <p className="label-s text-neutral-950">Learning Progress</p>
+                  <h6 className="heading-s text-neutral-950">
+                    {DETAILS.lesson.progress}%
+                  </h6>
+                  <div className="h-2 flex-1 overflow-hidden rounded-full bg-neutral-100">
+                    <div
+                      className="h-full rounded-full bg-secondary-400"
+                      style={{ width: `${DETAILS.lesson.progress}%` }}
+                    />
+                  </div>
+                </div>
               </TabsContent>
+
               <TabsContent value="reviews">
                 <h4 className="heading-xs text-neutral-950">
                   {DETAILS.review.sectionTitle}
