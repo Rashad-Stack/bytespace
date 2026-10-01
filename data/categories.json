@@ -1,11 +1,5 @@
 [
   {
-    "name": "Featured",
-    "value": "featured",
-    "isFeatured": true,
-    "icon": "/icons/featured.svg"
-  },
-  {
     "name": "Design",
     "value": "design",
     "isFeatured": false,
