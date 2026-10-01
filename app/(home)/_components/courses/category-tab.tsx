@@ -23,21 +23,23 @@ export default function CategoryTab() {
   return (
     <div className="my-6 sm:my-8 md:my-10.5 w-full">
       <Tabs defaultValue={CATEGORIES[0].value}>
-        <TabsList className="mx-auto mb-8 sm:mb-12 md:mb-16 xl:mb-19.25 flex w-full max-w-271.5 flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
-          {visibleCategories.map((category) => (
-            <TabsTrigger key={category.value} value={category.value}>
-              {category.name}
-            </TabsTrigger>
-          ))}
-          <button
-            type="button"
-            className="px-1 py-3 label-m whitespace-nowrap text-blue-700 transition-colors hover:text-blue-900 focus-visible:rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
-            aria-expanded={showAllCategories}
-            onClick={() => setShowAllCategories((isExpanded) => !isExpanded)}
-          >
-            {showAllCategories ? "- Less" : "+ More"}
-          </button>
-        </TabsList>
+        <div className="w-full overflow-x-auto pb-1">
+          <TabsList className="mx-auto mb-8 sm:mb-12 md:mb-16 xl:mb-19.25 flex max-w-271.5 flex-nowrap justify-start sm:justify-center gap-2 sm:gap-3 md:gap-4">
+            {visibleCategories.map((category) => (
+              <TabsTrigger key={category.value} value={category.value}>
+                {category.name}
+              </TabsTrigger>
+            ))}
+            <button
+              type="button"
+              className="px-1 py-3 label-m whitespace-nowrap text-blue-700 transition-colors hover:text-blue-900 focus-visible:rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+              aria-expanded={showAllCategories}
+              onClick={() => setShowAllCategories((isExpanded) => !isExpanded)}
+            >
+              {showAllCategories ? "- Less" : "+ More"}
+            </button>
+          </TabsList>
+        </div>
         <TabsContents>
           {CATEGORIES.map((category) => (
             <TabsContent key={category.value} value={category.value}>

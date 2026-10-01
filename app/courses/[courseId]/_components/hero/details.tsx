@@ -10,7 +10,7 @@ export default function Details() {
   ]
 
   return (
-    <div className="absolute top-0 right-0 w-full max-w-105 rounded-[24px] border border-neutral-200 bg-white p-10">
+    <div className="relative mt-8 xl:absolute xl:top-0 xl:right-0 xl:mt-0 w-full xl:max-w-105 rounded-[20px] sm:rounded-[24px] border border-neutral-200 bg-white p-5 sm:p-8 md:p-10">
       <h2 className="heading-xs font-heading">112 Lessons (24 hours)</h2>
 
       <ul className="mt-6 flex flex-col gap-4">

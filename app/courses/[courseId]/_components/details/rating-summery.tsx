@@ -17,9 +17,9 @@ export default function RatingSummary({
   )
 
   return (
-    <div className="mt-6 w-full rounded-[24px] border p-10">
+    <div className="mt-6 w-full rounded-[20px] sm:rounded-[24px] border p-5 sm:p-8 md:p-10">
       <div className="flex flex-col items-center gap-6 sm:flex-row">
-        <div className="flex flex-col items-center rounded-[8px] bg-secondary-400 p-10">
+        <div className="flex flex-col items-center rounded-[8px] bg-secondary-400 p-6 sm:p-10 w-full sm:w-auto">
           <span className="label-s text-neutral-950">Ratings</span>
           <span className="heading-s font-heading text-neutral-950">
             {ratingData.averageRating.toFixed(1)}

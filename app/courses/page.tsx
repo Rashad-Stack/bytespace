@@ -33,13 +33,15 @@ export default function Courses() {
         <div className="mt-6 sm:mt-8">
           <div className="w-full">
             <Tabs defaultValue={CATEGORIES[0].value}>
-              <TabsList className="mx-auto mb-8 sm:mb-12 md:mb-16 xl:mb-19.25 flex w-full flex-wrap justify-center gap-2 sm:gap-3 md:gap-4">
-                {visibleCategories.map((category) => (
-                  <TabsTrigger key={category.value} value={category.value}>
-                    {category.name}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+              <div className="w-full overflow-x-auto pb-1">
+                <TabsList className="mx-auto mb-8 sm:mb-12 md:mb-16 xl:mb-19.25 flex flex-nowrap justify-start sm:justify-center gap-2 sm:gap-3 md:gap-4">
+                  {visibleCategories.map((category) => (
+                    <TabsTrigger key={category.value} value={category.value}>
+                      {category.name}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
               <TabsContents>
                 {CATEGORIES.map((category) => (
                   <TabsContent key={category.value} value={category.value}>
