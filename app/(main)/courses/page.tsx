@@ -22,7 +22,7 @@ export default function Courses() {
         <div className="mx-auto mt-16 sm:mt-20 md:mt-25 w-full max-w-156 text-center text-white">
           <h2 className="heading-xs sm:heading-s">Find Your Next Course</h2>
           <div className="mt-6 sm:mt-8 w-full max-w-156 mx-auto">
-            <Search inputType="courses" />
+            <Search variant="courses" />
           </div>
         </div>
       </section>

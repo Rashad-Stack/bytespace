@@ -1,5 +1,5 @@
+import Search from "@/components/shared/search"
 import Ornaments from "./ornaments"
-import SearchForm from "./search-form"
 
 export default function Hero() {
   return (
@@ -26,7 +26,7 @@ export default function Hero() {
             business with our wide range of courses.
           </p>
 
-          <SearchForm />
+          <Search variant="hero" />
         </div>
       </div>
 
