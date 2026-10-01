@@ -1,4 +1,4 @@
-import Icon from "@/components/shared/icon"
+import StarRating from "@/components/shared/star-rating"
 
 type RatingData = {
   averageRating: number
@@ -39,11 +39,7 @@ export default function RatingSummary({
                   />
                 </div>
 
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Icon src="/icons/rating-star.svg" key={i} />
-                  ))}
-                </div>
+                <StarRating />
 
                 <span className="w-5 text-right body-m text-neutral-700">
                   {item.count}

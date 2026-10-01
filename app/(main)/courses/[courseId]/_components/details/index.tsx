@@ -6,6 +6,7 @@ import {
   TabsTrigger,
 } from "@/components/animate-ui/components/radix/tabs"
 import Icon from "@/components/shared/icon"
+import StarRating from "@/components/shared/star-rating"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import DETAILS from "@/data/course-details.json"
 import Image from "next/image"
@@ -178,10 +179,8 @@ export default function Details() {
                                 <p className="body-s text-neutral-500 sm:text-neutral-950">{review.timeAgo}</p>
                               </div>
 
-                              <div className="mt-4 sm:mt-6 flex items-center gap-1">
-                                {[...Array(5)].map((_, i) => (
-                                  <Icon src="/icons/rating-star.svg" key={i} />
-                                ))}
+                              <div className="mt-4 sm:mt-6">
+                                <StarRating />
                               </div>
 
                               <p className="mt-4 sm:mt-6 body-m text-neutral-700">
