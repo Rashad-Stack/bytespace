@@ -12,16 +12,18 @@ export default function FeaturedCategory() {
         description="At Bytespace, we believe in empowering individuals through knowledge. Our diverse range of courses spans various fields, ensuring there's something for everyone. Unleash your potential and explore our carefully curated categories."
       />
 
-      <div className="mt-8 sm:mt-12 md:mt-16 flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+      <div className="mt-8 flex items-center justify-center gap-4 max-lg:flex-wrap sm:mt-12 sm:gap-6 md:mt-16 md:gap-8 lg:gap-10">
         {featuredCategories.map((category) => (
           <div
             key={category.value}
-            className="flex h-36 w-36 sm:h-41.75 sm:w-41.75 flex-col items-center justify-center gap-3 sm:gap-4 rounded-[20px] sm:rounded-[24px] border"
+            className="flex h-36 w-36 flex-col items-center justify-center gap-3 rounded-[20px] border sm:h-41.75 sm:w-41.75 sm:gap-4 sm:rounded-[24px]"
           >
             <span className="rounded-full bg-secondary p-2.5 sm:p-3">
               <Icon src={category.icon!} wrapper="span" />
             </span>
-            <h3 className="label-m sm:label-xl text-center px-2">{category.name}</h3>
+            <h3 className="sm:label-xl px-2 text-center label-m">
+              {category.name}
+            </h3>
           </div>
         ))}
       </div>
