@@ -7,7 +7,7 @@ import {
 } from "@/components/animate-ui/components/radix/tabs"
 
 import FilterButtons from "@/components/shared/filter-buttons"
-import ProductCard from "@/components/shared/product-card"
+import ProductCardAnimated from "@/components/shared/product-card-animated"
 import Search from "@/components/shared/search"
 import CATEGORIES from "@/data/categories.json"
 import COURSES from "@/data/courses.json"
@@ -47,9 +47,10 @@ export default function Courses() {
                   <TabsContent key={category.value} value={category.value}>
                     <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
                       {COURSES.slice(0, 18).map((course, index) => (
-                        <ProductCard
+                        <ProductCardAnimated
                           key={`${course.href}-${index}`}
                           payload={course}
+                          index={index}
                         />
                       ))}
                     </div>

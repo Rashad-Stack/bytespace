@@ -1,27 +1,33 @@
 "use client"
 
 import { cn } from "cn"
+import { motion } from "motion/react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 interface NavLinkProps {
   href: string
   children: React.ReactNode
-  activeClassName?: string
 }
 
-export default function NavLink({ href, children, activeClassName = "font-medium" }: NavLinkProps) {
+export default function NavLink({ href, children }: NavLinkProps) {
   const pathname = usePathname()
+  const isActive = pathname === href
 
   return (
-    <Link
-      href={href}
-      className={cn(
-        "text-sm xl:text-base leading-[19.2px] font-normal text-white transition-colors hover:text-white/80",
-        pathname === href && activeClassName,
-      )}
+    <motion.div
+      animate={{ marginTop: isActive ? -6 : 0 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
     >
-      {children}
-    </Link>
+      <Link
+        href={href}
+        className={cn(
+          "text-sm xl:text-base leading-[19.2px] text-white transition-colors hover:text-white/80",
+          isActive ? "font-medium" : "font-normal",
+        )}
+      >
+        {children}
+      </Link>
+    </motion.div>
   )
 }

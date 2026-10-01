@@ -7,7 +7,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/animate-ui/components/radix/tabs"
-import ProductCard from "@/components/shared/product-card"
+import ProductCardAnimated from "@/components/shared/product-card-animated"
 import CATEGORIES from "@/data/categories.json"
 import COURSES from "@/data/courses.json"
 import { useState } from "react"
@@ -41,8 +41,8 @@ export default function CategoryTab() {
           {CATEGORIES.map((category) => (
             <TabsContent key={category.value} value={category.value}>
               <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
-                {COURSES.map((course) => (
-                  <ProductCard key={course.href} payload={course} />
+                {COURSES.map((course, index) => (
+                  <ProductCardAnimated key={course.href} payload={course} index={index} />
                 ))}
               </div>
             </TabsContent>

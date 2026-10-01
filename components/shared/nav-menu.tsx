@@ -7,7 +7,7 @@ export default function NavMenu({ className }: { className?: string }) {
   return (
     <nav className={cn("items-center gap-4 lg:gap-5 xl:gap-6", className)}>
       {navLinks.map((link) => (
-        <NavLink key={link.id} href={link.href} activeClassName="-mt-1.5 font-medium">
+        <NavLink key={link.id} href={link.href}>
           {link.name}
         </NavLink>
       ))}
