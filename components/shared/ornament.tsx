@@ -1,7 +1,6 @@
 import Image from "next/image"
 import type { CSSProperties } from "react"
 
-/** 1 design px -> scaled px. `--u` is set on the hero section (globals.css). */
 const px = (n: number) => `calc(var(--u, 1px) * ${n})`
 
 type Box = {

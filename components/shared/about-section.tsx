@@ -1,3 +1,4 @@
+import { cn } from "cn"
 import Image from "next/image"
 
 interface AboutSectionProps {
@@ -19,11 +20,16 @@ export default function AboutSection({
 }: AboutSectionProps) {
   return (
     <div
-      className={`flex flex-col items-center justify-between gap-8 sm:gap-12 lg:gap-15.75 ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
+      className={cn(
+        "flex flex-col items-center justify-between gap-8 sm:gap-12 lg:flex-row lg:gap-15.75",
+        {
+          "lg:flex-row-reverse": reverse,
+        }
+      )}
     >
       <div className="w-full max-w-143.5 space-y-6 sm:space-y-8 lg:space-y-10">
         <h2 className="heading-s sm:heading-m">{heading}</h2>
-        <div className="body-m sm:body-l text-neutral-700">{description}</div>
+        <div className="body-m text-neutral-700 sm:body-l">{description}</div>
         {children}
       </div>
 

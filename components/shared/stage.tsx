@@ -1,3 +1,4 @@
+import { cn } from "cn"
 import { ReactNode } from "react"
 
 /** 1 design px -> scaled px. `--u` is set on the hero section (globals.css). */
@@ -15,7 +16,10 @@ export default function Stage({
 }) {
   return (
     <div
-      className={`absolute inset-y-0 left-1/2 z-20 -translate-x-1/2 ${className}`}
+      className={cn(
+        "absolute inset-y-0 left-1/2 z-20 -translate-x-1/2",
+        className
+      )}
       style={{ width: px(width) }}
     >
       {children}
