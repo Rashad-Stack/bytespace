@@ -1,4 +1,33 @@
 {
+  "hero": {
+    "title": "Build Digital Asset: A Comprehensive Guide",
+    "subtitle": "Unlock the Power of Digital Creation with Expert Guidance",
+    "instructor": {
+      "name": "PurePearl Studio",
+      "role": "Professional Creator",
+      "avatar": "/images/course-details/profile.svg"
+    },
+    "level": "Intermediate",
+    "rating": 4.8,
+    "reviewCount": 172,
+    "studentCount": 199,
+    "totalLessons": 112,
+    "totalHours": 24,
+    "price": 25,
+    "priceLabel": "lifetime",
+    "callToAction": "Ready to Dive In? Enroll Now and Start Building Your Digital Future!",
+    "includes": [
+      { "icon": "/icons/resources.svg", "label": "Learning Resources" },
+      { "icon": "/icons/video.svg", "label": "Quality Lesson Videos" },
+      { "icon": "/icons/certificate.svg", "label": "Certificate of Completion" },
+      { "icon": "/icons/consultation.svg", "label": "Private Consultation" }
+    ],
+    "previewLessons": [
+      { "title": "Introduction to Digital Assets", "duration": "12 mins" },
+      { "title": "Design Principles for Impacts", "duration": "21 mins" },
+      { "title": "Advanced Techniques in Digital Creation", "duration": "16 mins" }
+    ]
+  },
   "tabs": [
     {
       "label": "About",

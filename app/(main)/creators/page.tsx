@@ -2,16 +2,10 @@ import { Button } from "@/components/animate-ui/components/buttons/button"
 import FilterButtons from "@/components/shared/filter-buttons"
 import ProductCard from "@/components/shared/product-card"
 import COURSES from "@/data/courses.json"
+import CREATORS from "@/data/creators.json"
 import Image from "next/image"
 
-const creator = {
-  name: "PurePearl Studio",
-  designation: "Passionate UI/UX, Web designer",
-  bio: "<p>Welcome to the creative world of [Creator's Name]. Here, you'll discover the passion, expertise, and inspiration that drive my creative journey. Let's explore and learn together!</p><p>I've delved into my creative portfolio, showcasing a glimpse of my artistic endeavors. From digital designs to multimedia projects, each piece tells a unique story. Explore the world of creativity with me.</p>",
-  image: "/images/home/profile-2.png",
-  products: 3,
-  followers: 12,
-}
+const creator = CREATORS[0]
 
 export default function CreatorsPage() {
   return (
@@ -39,9 +33,9 @@ export default function CreatorsPage() {
           </div>
 
           <div className="mt-6 lg:mt-10">
-            {creator.bio.split("</p>").map((paragraph, index) => (
+            {creator.bio.map((paragraph, index) => (
               <p key={index} className="body-l text-neutral-50">
-                {paragraph.replace("<p>", "")}
+                {paragraph}
               </p>
             ))}
           </div>

@@ -1,19 +1,13 @@
+import SectionHeading from "@/components/shared/section-heading"
 import Icon from "@/components/shared/icon"
 
 export default function FeaturedCategory() {
   return (
     <div className="my-10 sm:my-14 md:my-18">
-      <div className="mx-auto max-w-242.75 space-y-3 sm:space-y-4 text-center">
-        <h2 className="heading-xs sm:heading-s">
-          Explore Diverse Learning Paths at Bytespace
-        </h2>
-        <p className="body-m sm:body-l text-neutral-400">
-          At Bytespace, we believe in empowering individuals through knowledge.
-          Our diverse range of courses spans various fields, ensuring there's
-          something for everyone. Unleash your potential and explore our
-          carefully curated categories.
-        </p>
-      </div>
+      <SectionHeading
+        title="Explore Diverse Learning Paths at Bytespace"
+        description="At Bytespace, we believe in empowering individuals through knowledge. Our diverse range of courses spans various fields, ensuring there's something for everyone. Unleash your potential and explore our carefully curated categories."
+      />
 
       <div className="mt-8 sm:mt-12 md:mt-16 flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
         {featuredCategories.map((category) => (

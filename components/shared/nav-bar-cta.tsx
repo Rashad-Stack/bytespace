@@ -1,25 +1,17 @@
 "use client"
 
 import { cn } from "cn"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 import Icon from "./icon"
+import NavLink from "./nav-link"
+import Link from "next/link"
 
 export default function NavbarCta({ className }: { className?: string }) {
-  const pathname = usePathname()
-
   return (
     <div className={cn("items-center gap-4 lg:gap-5 xl:gap-6", className)}>
       {ctaLinks.map((link) => (
-        <Link
-          key={link.id}
-          href={link.href}
-          className={cn("text-sm xl:text-base leading-[19.2px] font-normal text-white transition-colors hover:text-white/80", {
-            "font-medium": pathname === link.href,
-          })}
-        >
+        <NavLink key={link.id} href={link.href}>
           {link.name}
-        </Link>
+        </NavLink>
       ))}
 
       <Link href="/cart" aria-label="Cart" className="transition-opacity hover:opacity-80">
