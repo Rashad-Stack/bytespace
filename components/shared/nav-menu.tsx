@@ -8,12 +8,12 @@ export default function NavMenu({ className }: { className?: string }) {
   const pathname = usePathname()
 
   return (
-    <nav className={cn("items-center gap-6", className)}>
+    <nav className={cn("items-center gap-4 lg:gap-5 xl:gap-6", className)}>
       {navLinks.map((link) => (
         <Link
           key={link.id}
           href={link.href}
-          className={cn("text-base leading-[19.2px] font-normal text-white", {
+          className={cn("text-sm xl:text-base leading-[19.2px] font-normal text-white transition-colors hover:text-white/80", {
             "-mt-1.5 font-medium": pathname === link.href,
           })}
         >

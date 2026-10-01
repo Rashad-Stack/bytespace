@@ -21,11 +21,28 @@ export default function MobileMenu() {
     return () => window.removeEventListener("keydown", onKey)
   }, [open])
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [open])
+
   return (
     <div className="lg:hidden">
-      <div className="flex items-center gap-4">
-        <Link href="/cart" aria-label="Cart" onClick={close}>
-          <Icon src="/icons/cart.svg" className="h-auto w-6 text-neutral-50" />
+      <div className="flex items-center gap-3 sm:gap-4">
+        <Link
+          href="/cart"
+          aria-label="Cart"
+          onClick={close}
+          className="p-1 transition-opacity hover:opacity-80"
+        >
+          <Icon src="/icons/cart.svg" className="h-auto w-5.5 sm:w-6 text-neutral-50" />
         </Link>
 
         <button
@@ -34,7 +51,7 @@ export default function MobileMenu() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="flex size-10 items-center justify-center rounded-full text-white"
+          className="flex size-9 sm:size-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/10 active:scale-95"
         >
           <svg
             width="24"
@@ -55,45 +72,54 @@ export default function MobileMenu() {
       </div>
 
       {open && (
-        <div
-          id="mobile-menu"
-          className="absolute inset-x-0 top-full border-t border-white/10 bg-primary-700 shadow-xl"
-        >
-          <nav className="container flex flex-col gap-1 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.id}
-                href={link.href}
-                onClick={close}
-                className={cn(
-                  "rounded-xl px-3 py-3 text-lg text-white",
-                  pathname === link.href
-                    ? "bg-white/10 font-medium"
-                    : "font-normal"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+        <>
+          {/* Backdrop overlay */}
+          <div
+            className="fixed inset-0 top-[65px] z-40 bg-black/40 backdrop-blur-xs"
+            onClick={close}
+            aria-hidden="true"
+          />
 
-            <div className="mt-3 flex items-center gap-3 border-t border-white/10 pt-4">
-              <Link
-                href={ctaLinks[0].href}
-                onClick={close}
-                className="flex-1 rounded-full border border-white/40 py-3 text-center text-base text-white"
-              >
-                {ctaLinks[0].name}
-              </Link>
-              <Link
-                href={ctaLinks[1].href}
-                onClick={close}
-                className="flex-1 rounded-full bg-secondary py-3 text-center text-base font-medium text-neutral-950"
-              >
-                {ctaLinks[1].name}
-              </Link>
-            </div>
-          </nav>
-        </div>
+          <div
+            id="mobile-menu"
+            className="absolute inset-x-0 top-full z-50 border-t border-white/10 bg-primary-700/98 backdrop-blur-md shadow-2xl transition-all"
+          >
+            <nav className="container flex flex-col gap-1 py-4 sm:py-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  onClick={close}
+                  className={cn(
+                    "rounded-xl px-4 py-3 text-base sm:text-lg text-white transition-colors hover:bg-white/10 active:bg-white/15",
+                    pathname === link.href
+                      ? "bg-white/10 font-medium"
+                      : "font-normal"
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              <div className="mt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 border-t border-white/10 pt-4 sm:pt-5">
+                <Link
+                  href={ctaLinks[0].href}
+                  onClick={close}
+                  className="flex-1 rounded-full border border-white/40 py-2.5 sm:py-3 text-center text-sm sm:text-base text-white transition-colors hover:bg-white/10"
+                >
+                  {ctaLinks[0].name}
+                </Link>
+                <Link
+                  href={ctaLinks[1].href}
+                  onClick={close}
+                  className="flex-1 rounded-full bg-secondary py-2.5 sm:py-3 text-center text-sm sm:text-base font-medium text-neutral-950 transition-colors hover:bg-secondary-400"
+                >
+                  {ctaLinks[1].name}
+                </Link>
+              </div>
+            </nav>
+          </div>
+        </>
       )}
     </div>
   )

@@ -7,13 +7,13 @@ import NavMenu from "./nav-menu"
 export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <div className="p container flex items-center justify-between py-5 md:py-6 lg:pt-8.75 lg:pb-11.75">
+      <div className="container flex items-center justify-between py-4 sm:py-5 md:py-6 lg:pt-8.75 lg:pb-11.75">
         <Link href="/" className="flex items-baseline gap-[8.12px]">
           <Icon
             src="/icons/logo.svg"
-            className="h-6 w-5.5 md:h-[31.5px] md:w-[28.875px]"
+            className="h-6 w-5.5 sm:h-7 sm:w-6.5 md:h-[31.5px] md:w-[28.875px]"
           />
-          <span className="font-clash-display text-xl font-bold text-neutral-50 md:text-2xl">
+          <span className="font-clash-display text-lg sm:text-xl font-bold text-neutral-50 md:text-2xl">
             ByteSpace
           </span>
         </Link>

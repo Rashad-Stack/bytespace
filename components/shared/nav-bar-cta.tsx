@@ -9,12 +9,12 @@ export default function NavbarCta({ className }: { className?: string }) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("items-center gap-6", className)}>
+    <div className={cn("items-center gap-4 lg:gap-5 xl:gap-6", className)}>
       {ctaLinks.map((link) => (
         <Link
           key={link.id}
           href={link.href}
-          className={cn("text-base leading-[19.2px] font-normal text-white", {
+          className={cn("text-sm xl:text-base leading-[19.2px] font-normal text-white transition-colors hover:text-white/80", {
             "font-medium": pathname === link.href,
           })}
         >
@@ -22,8 +22,8 @@ export default function NavbarCta({ className }: { className?: string }) {
         </Link>
       ))}
 
-      <Link href="/cart" aria-label="Cart">
-        <Icon src="/icons/cart.svg" className="h-auto w-6 text-neutral-50" />
+      <Link href="/cart" aria-label="Cart" className="transition-opacity hover:opacity-80">
+        <Icon src="/icons/cart.svg" className="h-auto w-5 lg:w-6 text-neutral-50" />
       </Link>
     </div>
   )
