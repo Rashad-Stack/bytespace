@@ -16,20 +16,21 @@ const creator = {
 export default function CreatorsPage() {
   return (
     <main>
-      <section className="h-148 bg-primary-800 grid-background">
-        <div className="container w-full pt-43 text-white">
-          <div className="flex items-center gap-6">
+      <section className="h-auto pb-10 lg:h-148 lg:pb-0 bg-primary-800 grid-background">
+        <div className="container w-full pt-24 sm:pt-28 md:pt-32 lg:pt-43 text-white">
+          <div className="flex items-center gap-4 sm:gap-6">
             <Image
               src={creator.image}
               alt={creator.name}
               width={96}
               height={96}
+              className="size-16 sm:size-20 lg:size-24 shrink-0"
             />
 
             <div>
-              <div className="flex items-start gap-2">
+              <div className="flex flex-wrap items-start gap-2">
                 <h3 className="heading-s">{creator.name}</h3>
-                <p className="w-fit rounded-full bg-secondary-400 px-6 py-2 label-m text-black">
+                <p className="w-fit rounded-full bg-secondary-400 px-4 sm:px-6 py-2 label-m text-black">
                   Creator
                 </p>
               </div>
@@ -37,7 +38,7 @@ export default function CreatorsPage() {
             </div>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-6 lg:mt-10">
             {creator.bio.split("</p>").map((paragraph, index) => (
               <p key={index} className="body-l text-neutral-50">
                 {paragraph.replace("<p>", "")}
@@ -45,7 +46,7 @@ export default function CreatorsPage() {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3 sm:gap-6">
+          <div className="mt-6 lg:mt-10 flex flex-wrap items-center gap-3 sm:gap-6">
             <div className="flex items-center gap-3 sm:gap-6">
               <Button
                 type="button"
