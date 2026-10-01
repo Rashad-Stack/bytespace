@@ -79,7 +79,7 @@ export default function Form() {
 
       <SocialLogin />
 
-      <p className="text-center body-m text-neutral-700">
+      <p className="text-center body-m text-neutral-400">
         New user?{" "}
         <Link href="/sign-up" className="body-m text-primary-800">
           Create an account
