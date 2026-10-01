@@ -9,9 +9,9 @@ import {
 } from "@/components/animate-ui/components/radix/tabs"
 import { useState } from "react"
 
-import CATEGORIES from "./categories.json"
-import COURSES from "./courses.json"
-import ProductCard from "./product-card"
+import ProductCard from "@/components/shared/product-card"
+import CATEGORIES from "@/data/categories.json"
+import COURSES from "@/data/courses.json"
 
 export default function CategoryTab() {
   const [showAllCategories, setShowAllCategories] = useState(false)

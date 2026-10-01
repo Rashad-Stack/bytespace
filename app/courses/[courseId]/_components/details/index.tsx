@@ -7,8 +7,8 @@ import {
 } from "@/components/animate-ui/components/radix/tabs"
 import Icon from "@/components/shared/icon"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import DETAILS from "@/data/course-details.json"
 import Image from "next/image"
-import DETAILS from "./details.json"
 import RatingSummary from "./rating-summery"
 
 export default function Details() {
