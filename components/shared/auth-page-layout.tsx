@@ -1,3 +1,4 @@
+import FadeUp from "@/components/motion/fade-up"
 import Image from "next/image"
 
 interface AuthPageLayoutProps {
@@ -16,7 +17,7 @@ export default function AuthPageLayout({
       <section className="isolate min-h-dvh bg-primary-700 grid-background pt-20 sm:pt-24 md:pt-28 lg:pt-30">
         <div className="container">
           <div className="flex items-stretch justify-between">
-            <div className="hidden lg:flex max-w-123 flex-1 flex-col">
+            <FadeUp className="hidden max-w-123 flex-1 flex-col lg:flex">
               <h6 className="heading-xs text-neutral-50">{heading}</h6>
               <p className="mt-4 body-l text-neutral-50">{description}</p>
 
@@ -28,11 +29,14 @@ export default function AuthPageLayout({
                   className="object-fill object-center"
                 />
               </div>
-            </div>
+            </FadeUp>
 
-            <div className="w-full max-w-full lg:max-w-144.75 lg:flex-1 mx-auto lg:mx-0">
+            <FadeUp
+              className="mx-auto w-full max-w-full lg:mx-0 lg:max-w-144.75 lg:flex-1"
+              delay={0.12}
+            >
               {children}
-            </div>
+            </FadeUp>
           </div>
         </div>
       </section>
